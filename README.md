@@ -1,159 +1,215 @@
-# XY Coffee Project
+# ☕ XY.COFFE - Café Artesanal
 
-Proyecto Vite + TypeScript con DevContainer configurado.
+Una página web moderna y responsive para una cafetería artesanal, desarrollada con Vite y TypeScript. Inspirada en el diseño de Starbucks con una paleta de colores azul rey distintiva.
 
-## 🚀 Inicio Rápido
+![XY Coffee](public/logo.svg)
 
-### Opción 1: Usar DevContainer (Recomendado)
+## 🎨 Características
 
-1. **Instalar requisitos previos:**
+### Diseño y UX
+- ✨ **Diseño moderno y elegante** inspirado en Starbucks
+- 🎨 **Paleta de colores azul rey** (#1E3A8A) como color principal
+- 📱 **Completamente responsive** - optimizado para móviles, tablets y escritorio
+- 🌊 **Animaciones suaves** y transiciones fluidas
+- ♿ **Accesible** - soporte para modo de alto contraste y movimiento reducido
+- 🌓 **Modo oscuro** automático según las preferencias del sistema
 
-   - Docker
-   - Visual Studio Code
-   - Extensión "Dev Containers" de VSCode
+### Secciones
 
-2. **Abrir en DevContainer:**
+1. **Hero Section**
+   - Banner principal con gradiente azul rey
+   - Animaciones de fade-in
+   - Indicador de scroll animado
+   - Call-to-action destacados
 
-   - Abre VSCode: `code .`
-   - Presiona `Ctrl+Shift+P`
-   - Selecciona "Dev Containers: Reopen in Container"
-   - Espera a que se construya el contenedor (primera vez: ~5-10 minutos)
+2. **Featured Cards**
+   - Tres características principales de la cafetería
+   - Iconos y descripciones
+   - Efectos hover elegantes
 
-3. **Inicializar el proyecto:**
+3. **Menú**
+   - Grid de productos con imágenes
+   - Filtros por categoría (Todos, Calientes, Fríos, Especiales)
+   - Animaciones de transición
+   - Precios destacados
 
-   ```bash
-   # Dentro del contenedor
-   ./init-vite.sh
-   ```
+4. **Sobre Nosotros**
+   - Historia de la cafetería
+   - Estadísticas destacadas
+   - Diseño en dos columnas
 
-4. **Iniciar servidor de desarrollo:**
-   ```bash
-   npm run dev
-   ```
+5. **Ubicación**
+   - Información de contacto
+   - Horarios de atención
+   - Mapa placeholder interactivo
 
-### Opción 2: Desarrollo Local
+6. **Contacto**
+   - Formulario de suscripción
+   - Newsletter
 
-1. **Instalar Node.js 20 o superior**
+7. **Footer**
+   - Enlaces rápidos
+   - Redes sociales
+   - Newsletter adicional
+   - Multi-columna responsive
 
-2. **Inicializar proyecto:**
+### Funcionalidades JavaScript/TypeScript
 
-   ```bash
-   ./init-vite.sh
-   ```
+- 🧭 **Navegación sticky** con efecto de scroll (hide/show)
+- 📱 **Menú hamburguesa** para móviles
+- 🔗 **Smooth scrolling** para enlaces internos
+- 🎯 **Intersection Observer** para animaciones on-scroll
+- 🎪 **Parallax effect** en el hero
+- 🔄 **Sistema de filtros** para el menú
+- 📝 **Formulario funcional** con validación
 
-3. **Iniciar servidor de desarrollo:**
-   ```bash
-   npm run dev
-   ```
+## 🚀 Tecnologías
 
-## 📁 Estructura del Proyecto
+- **Vite 7.1.7** - Build tool y dev server
+- **TypeScript 5.9.3** - Type safety y mejor experiencia de desarrollo
+- **CSS3** - Variables CSS, Grid, Flexbox, animaciones
+- **HTML5 Semantic** - Estructura semántica y accesible
+- **Google Fonts** - Tipografía Poppins
+
+## 📦 Instalación y Uso
+
+### Prerequisitos
+- Node.js 18+ 
+- npm o yarn
+
+### Instalación
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/tuusuario/xy.coffe.git
+
+# Navegar al directorio
+cd xy.coffe
+
+# Instalar dependencias
+npm install
+```
+
+### Comandos Disponibles
+
+```bash
+# Desarrollo - inicia el servidor de desarrollo
+npm run dev
+
+# Build - compila para producción
+npm run build
+
+# Preview - previsualiza el build de producción
+npm run preview
+```
+
+El servidor de desarrollo se iniciará en `http://localhost:5173`
+
+## 🎨 Personalización
+
+### Colores
+
+Los colores se definen en variables CSS en `src/style.css`:
+
+```css
+:root {
+  --primary-color: #1E3A8A;      /* Azul Rey */
+  --primary-dark: #1E40AF;        /* Azul Rey Oscuro */
+  --primary-light: #3B82F6;       /* Azul Rey Claro */
+  --secondary-color: #60A5FA;     /* Azul Secundario */
+  --accent-color: #DBEAFE;        /* Azul Acento */
+}
+```
+
+### Logo
+
+El logo SVG se encuentra en `public/logo.svg` y se puede editar para cambiar:
+- Colores
+- Animaciones del vapor
+- Texto "XY"
+- Forma de la taza
+
+### Contenido
+
+Para modificar el contenido:
+- **Texto**: Edita `src/main.ts` (líneas de HTML template)
+- **Productos del menú**: Modifica la sección `.menu-grid` en `src/main.ts`
+- **Estilos**: Edita `src/style.css`
+
+## 📱 Responsive Breakpoints
+
+- **Desktop**: > 768px (diseño completo)
+- **Tablet**: 481px - 768px (adaptado)
+- **Mobile**: ≤ 480px (menú hamburguesa, columnas simples)
+
+## ⚡ Performance
+
+- Carga rápida con Vite
+- CSS optimizado con variables
+- Imágenes placeholder ligeras
+- Lazy loading con Intersection Observer
+- Animaciones con CSS transforms (GPU accelerated)
+
+## 🌐 Soporte de Navegadores
+
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
+- Opera 76+
+
+## 📝 Estructura del Proyecto
 
 ```
 xy.coffe/
-├── .devcontainer/          # Configuración del DevContainer
-│   ├── devcontainer.json   # Configuración principal
-│   └── README.md           # Documentación del DevContainer
-├── .vscode/                # Configuración de VSCode
-│   ├── settings.json       # Configuración del editor
-│   └── extensions.json     # Extensiones recomendadas
-├── src/                    # Código fuente (se crea con init-vite.sh)
-├── check-setup.sh          # Verificar configuración
-├── init-vite.sh            # Inicializar proyecto Vite
-├── Makefile                # Comandos simplificados
-├── .editorconfig           # Configuración del editor
-├── .gitignore              # Archivos ignorados por Git
-├── .prettierrc             # Configuración de Prettier
-├── QUICK_START.md          # Guía de inicio rápido
-├── SETUP_COMPLETE.md       # Documentación de configuración
-└── README.md               # Este archivo
+├── public/
+│   ├── logo.svg              # Logo principal
+│   └── vite.svg              # Logo de Vite
+├── src/
+│   ├── main.ts               # JavaScript principal + HTML
+│   └── style.css             # Estilos CSS
+├── index.html                # HTML base
+├── package.json              # Dependencias
+├── tsconfig.json             # Configuración TypeScript
+└── README.md                 # Este archivo
 ```
 
-## 🛠️ Scripts Disponibles
+## 🤝 Contribuciones
 
-Una vez inicializado el proyecto Vite con `./init-vite.sh`, tendrás disponibles:
+Las contribuciones son bienvenidas! Por favor:
 
-- `npm run dev` - Inicia el servidor de desarrollo
-- `npm run build` - Construye el proyecto para producción
-- `npm run preview` - Vista previa del build de producción
-- `npm run lint` - Ejecuta el linter
-- `npm run lint:fix` - Corrige problemas automáticamente
-- `npm run format` - Formatea el código con Prettier
-- `npm run test` - Ejecuta tests con Vitest
-- `npm run type-check` - Verifica tipos de TypeScript
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add: amazing feature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
-### Comandos con Make
+## 📄 Licencia
 
-También puedes usar el `Makefile` para comandos simplificados:
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-```bash
-make help       # Ver todos los comandos disponibles
-make check      # Verificar configuración
-make init       # Inicializar proyecto Vite
-make install    # Instalar dependencias
-make dev        # Iniciar servidor de desarrollo
-make build      # Construir para producción
-make lint       # Ejecutar linter
-make format     # Formatear código
-make test       # Ejecutar tests
-make clean      # Limpiar archivos generados
-```
+## 👥 Autor
 
-## 🔐 Configuración SSH
+Desarrollado con ❤️ y ☕ para XY Coffee
 
-El devcontainer monta automáticamente tu directorio `~/.ssh` en modo lectura, permitiendo:
+## 🎯 Próximas Mejoras
 
-- ✅ Clonar repositorios privados
-- ✅ Push/Pull sin configuración adicional
-- ✅ Mantener tus claves seguras (solo lectura)
-- ✅ Compartible con otros contenedores (network: host)
+- [ ] Integración con sistema de pedidos online
+- [ ] Galería de fotos real
+- [ ] Integración con Google Maps
+- [ ] Sistema de reviews/testimonios
+- [ ] Blog de café
+- [ ] Programa de lealtad
+- [ ] Multi-idioma (i18n)
+- [ ] PWA (Progressive Web App)
+- [ ] Backend con Node.js/Express
+- [ ] Base de datos para productos
 
-## ✨ Características del DevContainer
+## 📞 Contacto
 
-- ✅ **Usuario no-root** - Usa el usuario `node` predeterminado
-- ✅ **Node.js 20 LTS** - Preinstalado con npm, pnpm y yarn
-- ✅ **TypeScript y Vite** - Configurados automáticamente
-- ✅ **Git y GitHub CLI** - Para control de versiones
-- ✅ **Zsh + Oh My Zsh** - Shell mejorado
-- ✅ **30+ Extensiones VSCode** - ESLint, Prettier, GitLens y más
-- ✅ **SSH Keys montadas** - En modo solo lectura
-- ✅ **Hot Reload** - Recarga automática en desarrollo
+- Website: [xy.coffe](https://xy.coffe)
+- Email: info@xy.coffe
+- Instagram: [@xycoffe](https://instagram.com/xycoffe)
 
-## 📚 Más Información
+---
 
-- [Guía de Inicio Rápido](QUICK_START.md) - Pasos detallados para comenzar
-- [Configuración Completa](SETUP_COMPLETE.md) - Detalles de la configuración
-- [Documentación del DevContainer](.devcontainer/README.md) - Información técnica
-- [Documentación de Vite](https://vitejs.dev/)
-- [Documentación de TypeScript](https://www.typescriptlang.org/)
-
-## 🐛 Solución de Problemas
-
-### El DevContainer no inicia
-
-```bash
-# Limpiar cachés de Docker
-docker system prune -af
-
-# En VSCode: F1 → "Dev Containers: Rebuild Container"
-```
-
-### Verificar configuración
-
-```bash
-./check-setup.sh
-```
-
-## 🤝 Contribuir
-
-Este proyecto usa:
-
-- **Prettier** para formateo de código
-- **ESLint** para linting
-- **EditorConfig** para consistencia entre editores
-- **TypeScript** para tipado estático
-
-El formateo se aplica automáticamente al guardar cuando usas el DevContainer.
-
-## 📝 Licencia
-
-[Especificar licencia]
+**¡Disfruta tu café! ☕**
