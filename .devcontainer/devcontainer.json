@@ -1,0 +1,130 @@
+{
+    "name": "XY Coffee - Vite TypeScript",
+    // Usar imagen base de Node.js directamente
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bookworm",
+    // Features de DevContainers
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "installOhMyZsh": true,
+            "upgradePackages": true,
+            "username": "automatic",
+            "uid": "automatic",
+            "gid": "automatic",
+            "configureZshAsDefaultShell": true
+        },
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "version": "latest"
+        }
+    },
+    // Usar el usuario no-root por defecto
+    "remoteUser": "node",
+    // Montar directorio SSH en modo lectura
+    "mounts": [
+        "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly"
+    ],
+    // Permitir compartir con otros contenedores usando network host
+    "runArgs": [
+        "--network=host"
+    ],
+    // Comandos a ejecutar después de crear el contenedor
+    "postCreateCommand": "npm install -g pnpm typescript vite ts-node && git config --global --add safe.directory /workspaces/${localWorkspaceFolderBasename}",
+    // Extensiones de VSCode para desarrollo con Vite + TypeScript
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // TypeScript y JavaScript esenciales
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "ms-vscode.vscode-typescript-next",
+                // Utilidades de desarrollo
+                "usernamehw.errorlens",
+                "christian-kohler.path-intellisense",
+                "christian-kohler.npm-intellisense",
+                "formulahendry.auto-close-tag",
+                "formulahendry.auto-rename-tag",
+                // Git
+                "eamodio.gitlens",
+                "mhutchie.git-graph",
+                // CSS y estilos
+                "stylelint.vscode-stylelint",
+                "bradlc.vscode-tailwindcss",
+                // Iconos y temas
+                "vscode-icons-team.vscode-icons",
+                "pkief.material-icon-theme",
+                // Productividad
+                "EditorConfig.EditorConfig",
+                "mikestead.dotenv",
+                "aaron-bond.better-comments",
+                // Snippets y autocompletado
+                "dsznajder.es7-react-js-snippets",
+                "VisualStudioExptTeam.vscodeintellicode",
+                // Linting y formato
+                "DavidAnson.vscode-markdownlint",
+                "yzhang.markdown-all-in-one",
+                // Testing
+                "vitest.explorer",
+                // Debug
+                "ms-vscode.js-debug-nightly",
+                // Docker
+                "ms-azuretools.vscode-docker",
+                // Vite específico
+                "antfu.vite",
+                // Import cost
+                "wix.vscode-import-cost"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "editor.codeActionsOnSave": {
+                    "source.fixAll.eslint": "explicit",
+                    "source.organizeImports": "explicit"
+                },
+                "typescript.updateImportsOnFileMove.enabled": "always",
+                "javascript.updateImportsOnFileMove.enabled": "always",
+                "typescript.tsdk": "node_modules/typescript/lib",
+                "typescript.enablePromptUseWorkspaceTsdk": true,
+                "eslint.validate": [
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "typescriptreact"
+                ],
+                "files.eol": "\n",
+                "files.insertFinalNewline": true,
+                "files.trimTrailingWhitespace": true,
+                "[markdown]": {
+                    "files.trimTrailingWhitespace": false
+                },
+                "files.associations": {
+                    "*.css": "css",
+                    "*.scss": "scss"
+                },
+                "emmet.includeLanguages": {
+                    "javascript": "javascriptreact",
+                    "typescript": "typescriptreact"
+                }
+            }
+        }
+    },
+    // Variables de entorno
+    "remoteEnv": {
+        "NODE_ENV": "development"
+    },
+    // Puertos a exponer (Vite usa 5173 por defecto)
+    "forwardPorts": [
+        5173,
+        4173
+    ],
+    "portsAttributes": {
+        "5173": {
+            "label": "Vite Dev Server",
+            "onAutoForward": "notify"
+        },
+        "4173": {
+            "label": "Vite Preview",
+            "onAutoForward": "notify"
+        }
+    }
+}
