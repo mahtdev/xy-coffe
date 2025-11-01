@@ -1,0 +1,124 @@
+/* Delivery Section Styles */
+.delivery-section {
+  padding: var(--spacing-xl) 0;
+  background: var(--bg-dark);
+}
+
+.delivery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-md) 0;
+}
+
+.delivery-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform var(--transition-normal);
+}
+
+.delivery-link:hover {
+  transform: translateY(-8px);
+}
+
+.delivery-card {
+  background: var(--bg-card);
+  border-radius: 15px;
+  padding: 0;
+  text-align: center;
+  transition: all var(--transition-normal);
+  border: 2px solid var(--border-color);
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.delivery-link:hover .delivery-card {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-glow);
+  background: var(--bg-light);
+}
+
+.delivery-image-wrapper {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+
+.delivery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.delivery-link:hover .delivery-image {
+  transform: scale(1.1);
+}
+
+.delivery-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  padding: var(--spacing-md);
+  background: var(--bg-card);
+  transition: color var(--transition-fast);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+}
+
+.delivery-link:hover .delivery-name {
+  color: var(--primary-color);
+}
+
+.delivery-info {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1rem;
+  margin-top: var(--spacing-lg);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .delivery-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    max-width: 400px;
+  }
+
+  .delivery-card {
+    padding: 0;
+  }
+
+  .delivery-name {
+    font-size: 1rem;
+    padding: var(--spacing-sm);
+  }
+
+  .delivery-info {
+    font-size: 0.95rem;
+    padding: 0 var(--spacing-sm);
+  }
+}
