@@ -105,6 +105,50 @@ npm run preview
 
 El servidor de desarrollo se iniciará en `http://localhost:5173`
 
+## 🚀 Despliegue en GitHub Pages
+
+Este proyecto está configurado para desplegarse automáticamente en GitHub Pages.
+
+### Configuración inicial
+
+1. **Activa GitHub Pages en tu repositorio:**
+   - Ve a Settings → Pages en tu repositorio de GitHub
+   - En "Source", selecciona "GitHub Actions"
+   - Guarda los cambios
+
+2. **Haz push a la rama principal:**
+   ```bash
+   git add .
+   git commit -m "Configurar GitHub Pages"
+   git push origin main
+   ```
+
+3. **Espera a que se complete el workflow:**
+   - Ve a la pestaña "Actions" en tu repositorio
+   - Verás un workflow llamado "Deploy to GitHub Pages"
+   - Espera a que termine (generalmente toma 1-2 minutos)
+
+4. **Accede a tu sitio:**
+   - Una vez completado, tu sitio estará disponible en:
+   - `https://tusuario.github.io/xy.coffe`
+   - O si tu repositorio se llama diferente: `https://tusuario.github.io/nombre-del-repo`
+
+### Actualizaciones automáticas
+
+Cada vez que hagas push a la rama `main` o `master`, el sitio se actualizará automáticamente.
+
+### Build manual
+
+Si prefieres hacer el build manualmente:
+
+```bash
+# Hacer build
+npm run build
+
+# Los archivos estarán en la carpeta dist/
+# Puedes subirlos a la rama gh-pages manualmente
+```
+
 ## 🎨 Personalización
 
 ### Colores
