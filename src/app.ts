@@ -1,5 +1,5 @@
 import { Contact, createContactHTML } from './features/contact';
-import { Cookies, createCookiesHTML } from './features/cookies';
+import { createCookiesHTML } from './features/cookies';
 import { Delivery, createDeliveryHTML } from './features/delivery';
 import { Footer, createFooterHTML } from './features/footer';
 import { Hero, createHeroHTML } from './features/hero';
