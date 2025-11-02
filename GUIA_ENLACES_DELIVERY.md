@@ -22,11 +22,11 @@ Cada plataforma de delivery debe tener la siguiente estructura:
 
 ```typescript
 {
-  name: string;           // Nombre de la plataforma
-  image: string;         // Ruta de la imagen (usar getPublicPath())
-  webUrl: string;        // URL para versión web
-  mobileUrl: string;     // URL para app móvil (deep link)
-  alt: string;           // Texto alternativo para accesibilidad
+  name: string; // Nombre de la plataforma
+  image: string; // Ruta de la imagen (usar getPublicPath())
+  webUrl: string; // URL para versión web
+  mobileUrl: string; // URL para app móvil (deep link)
+  alt: string; // Texto alternativo para accesibilidad
 }
 ```
 
@@ -53,6 +53,7 @@ Las imágenes de delivery deben seguir estas especificaciones para garantizar un
 #### Dimensiones Recomendadas
 
 **Tamaño recomendado para las imágenes**:
+
 - **Ancho**: `800px` (mínimo) - `1200px` (recomendado)
 - **Alto**: `600px` (mínimo) - `900px` (recomendado)
 - **Proporción**: `4:3` o `3:2` (preferible)
@@ -61,12 +62,14 @@ Las imágenes de delivery deben seguir estas especificaciones para garantizar un
 #### Dimensiones del Contenedor
 
 **Desktop**:
+
 - Ancho mínimo: `250px` (columna mínima del grid)
 - Ancho máximo: `~300px` (dividido entre 3 columnas en grid de 900px)
 - Alto mínimo: `300px` (min-height del card)
 - Alto de imagen: `~280px` (alto total menos espacio del nombre)
 
 **Mobile**:
+
 - Ancho máximo: `400px` (max-width del grid en móvil)
 - Alto mínimo: `300px` (min-height del card)
 
@@ -82,16 +85,19 @@ Las imágenes usan `object-fit: cover`, lo que significa:
 #### Especificaciones Técnicas
 
 **Formato de archivo**:
+
 - **Tipo**: PNG (recomendado) o JPG/WebP
 - **Fondo**: Transparente (si es PNG) o con fondo apropiado
 - **Compresión**: Optimizado para web (mantener calidad visual)
 
 **Nombres de archivos**:
+
 - `didi.png` - Para DiDi Food
 - `rappy.png` - Para Rappy
 - `ubereats.png` - Para Uber Eats
 
 **Ubicación de archivos**:
+
 ```
 public/
   └── delivery/
@@ -102,15 +108,15 @@ public/
 
 #### Resumen de Tamaños
 
-| Especificación | Valor |
-|---------------|-------|
-| **Ancho mínimo recomendado** | 800px |
-| **Ancho recomendado** | 1200px |
-| **Alto mínimo recomendado** | 600px |
-| **Alto recomendado** | 900px |
-| **Proporción** | 4:3 o 3:2 |
-| **Formato** | PNG (transparente) |
-| **Peso máximo** | 200KB (optimizado) |
+| Especificación               | Valor              |
+| ---------------------------- | ------------------ |
+| **Ancho mínimo recomendado** | 800px              |
+| **Ancho recomendado**        | 1200px             |
+| **Alto mínimo recomendado**  | 600px              |
+| **Alto recomendado**         | 900px              |
+| **Proporción**               | 4:3 o 3:2          |
+| **Formato**                  | PNG (transparente) |
+| **Peso máximo**              | 200KB (optimizado) |
 
 #### Ejemplo Visual de Tamaños
 
@@ -145,11 +151,13 @@ public/
 ### Formato de Deep Link
 
 **Formato correcto** (uso actual):
+
 ```
 ubereats://store/browse?client_id=eats&storeUUID=UUID_DE_LA_TIENDA
 ```
 
 **Ejemplo**:
+
 ```
 ubereats://store/browse?client_id=eats&storeUUID=994e0e4d-26be-5d65-b6f5-46b98446defb
 ```
@@ -168,11 +176,13 @@ ubereats://store/browse?client_id=eats&storeUUID=994e0e4d-26be-5d65-b6f5-46b9844
 ### URL Web
 
 **Formato**:
+
 ```
 https://www.ubereats.com/store-browse-uuid/UUID?diningMode=DELIVERY
 ```
 
 **Ejemplo completo**:
+
 ```typescript
 {
   name: 'Uber Eats',
@@ -204,6 +214,7 @@ https://www.ubereats.com/store-browse-uuid/UUID?diningMode=DELIVERY
 ### Formato de Deep Link
 
 **Formato actual**:
+
 ```
 didifood://
 ```
@@ -211,6 +222,7 @@ didifood://
 ### URL Web
 
 **Formato**:
+
 ```
 https://didi-food.com
 ```
@@ -239,6 +251,7 @@ https://didi-food.com
 ### Formato de Deep Link
 
 **Formato actual**:
+
 ```
 rappi://
 ```
@@ -246,6 +259,7 @@ rappi://
 ### URL Web
 
 **Formato**:
+
 ```
 https://rappi.com
 ```
@@ -274,6 +288,7 @@ https://rappi.com
 ### Lógica de Detección de Dispositivos
 
 El código detecta dispositivos móviles usando:
+
 ```typescript
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 ```
@@ -281,11 +296,14 @@ const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 ### Lógica de Deep Links
 
 1. **Detectar si es deep link**:
+
    ```typescript
-   const isDeepLink = /^[a-z]+:\/\//.test(data.mobileUrl) && !data.mobileUrl.startsWith('http');
+   const isDeepLink =
+     /^[a-z]+:\/\//.test(data.mobileUrl) && !data.mobileUrl.startsWith('http');
    ```
 
 2. **Abrir app en móvil**:
+
    ```typescript
    window.location.href = data.mobileUrl;
    ```
@@ -298,12 +316,13 @@ const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 ```typescript
 if (isMobile && data.mobileUrl) {
-  const isDeepLink = /^[a-z]+:\/\//.test(data.mobileUrl) && !data.mobileUrl.startsWith('http');
-  
+  const isDeepLink =
+    /^[a-z]+:\/\//.test(data.mobileUrl) && !data.mobileUrl.startsWith('http');
+
   if (isDeepLink) {
     const startTime = Date.now();
     window.location.href = data.mobileUrl;
-    
+
     setTimeout(() => {
       const elapsed = Date.now() - startTime;
       if (elapsed > 500 && document.hasFocus()) {
@@ -356,17 +375,19 @@ Cuando se solicite actualizar un enlace de delivery, verificar:
 
 1. **Obtener la nueva URL web de Uber Eats**:
    - Ejemplo: `https://www.ubereats.com/store-browse-uuid/NUEVO-UUID?diningMode=DELIVERY`
-   
 2. **Extraer el UUID**:
+
    - Copiar la parte entre `/store-browse-uuid/` y `?`
    - Ejemplo: `NUEVO-UUID`
 
 3. **Construir el deep link**:
+
    ```
    ubereats://store/browse?client_id=eats&storeUUID=NUEVO-UUID
    ```
 
 4. **Actualizar en `delivery.ts`**:
+
    ```typescript
    {
      name: 'Uber Eats',
@@ -413,11 +434,13 @@ npm run type-check  # Si está disponible
 ### Uber Eats (Más Importante)
 
 **Formato deep link CORRECTO**:
+
 ```
 ubereats://store/browse?client_id=eats&storeUUID=UUID_AQUI
 ```
 
 **Formato URL web**:
+
 ```
 https://www.ubereats.com/store-browse-uuid/UUID_AQUI?diningMode=DELIVERY
 ```
@@ -428,4 +451,3 @@ https://www.ubereats.com/store-browse-uuid/UUID_AQUI?diningMode=DELIVERY
 
 **Última actualización**: 2024  
 **Mantenido por**: Equipo XY.COFFE
-

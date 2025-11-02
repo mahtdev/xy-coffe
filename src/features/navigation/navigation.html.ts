@@ -7,7 +7,7 @@ export const createNavigationHTML = (navLinks: NavLink[]): string => {
     <nav class="navbar" id="navbar">
       <div class="nav-container">
         <div class="nav-logo">
-          <img src="${getPublicPath('logo-100x100.webp')}" alt="XY.COFFE Logo" class="logo-image" width="50" height="50" />
+          <img src="${getPublicPath('logo.webp')}" alt="XY.COFFE Logo" class="logo-image" width="50" height="50" />
           <span class="logo-text">XY.COFFE</span>
         </div>
 
