@@ -21,7 +21,7 @@ export class Delivery {
       name: 'Uber Eats',
       image: getPublicPath('delivery/ubereats.png'),
       webUrl: 'https://www.ubereats.com/store-browse-uuid/994e0e4d-26be-5d65-b6f5-46b98446defb?diningMode=DELIVERY',
-      mobileUrl: 'ubereats://store-browse-uuid/994e0e4d-26be-5d65-b6f5-46b98446defb?diningMode=DELIVERY',
+      mobileUrl: 'ubereats://store/browse?client_id=eats&storeUUID=994e0e4d-26be-5d65-b6f5-46b98446defb',
       alt: 'Uber Eats - Pedidos a domicilio'
     }
   ];
