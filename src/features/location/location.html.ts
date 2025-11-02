@@ -1,4 +1,5 @@
 import type { LocationInfo } from '../../shared/types';
+import { getPublicPath } from '../../shared/utils';
 
 export const createLocationHTML = (locationData: LocationInfo): string => {
   return `
@@ -25,7 +26,7 @@ export const createLocationHTML = (locationData: LocationInfo): string => {
 
           <div class="location-card">
             <div class="location-icon location-whatsapp">
-              <img src="/whatsapp.png" alt="WhatsApp" class="whatsapp-icon" />
+              <img src="${getPublicPath('whatsapp.png')}" alt="WhatsApp" class="whatsapp-icon" />
             </div>
             <h3>Contacto</h3>
             <p>${locationData.contact}</p>

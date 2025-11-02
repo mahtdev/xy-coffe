@@ -1,5 +1,16 @@
 // Shared utility functions
 
+/**
+ * Get the correct path for public assets, considering the base URL
+ */
+export const getPublicPath = (path: string): string => {
+  // Remove leading slash if present
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  // Get base URL from Vite (includes trailing slash)
+  const baseUrl = import.meta.env.BASE_URL;
+  return `${baseUrl}${cleanPath}`;
+};
+
 export const smoothScrollTo = (targetId: string, offset: number = 80): void => {
   const target = document.querySelector(targetId) as HTMLElement;
   if (target) {

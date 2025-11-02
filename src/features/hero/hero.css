@@ -2,7 +2,7 @@
 .hero {
   position: relative;
   height: 100vh;
-  background-image: url('/fondo.webp');
+  /* background-image is set dynamically via JavaScript */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -1,24 +1,25 @@
+import { getPublicPath } from '../../shared/utils';
 import './delivery.css';
 
 export class Delivery {
   private deliveryLinks = [
     {
       name: 'DiDi Food',
-      image: '/delivery/didi.png',
+      image: getPublicPath('delivery/didi.png'),
       webUrl: 'https://didi-food.com',
       mobileUrl: 'didifood://',
       alt: 'DiDi Food - Pedidos a domicilio'
     },
     {
       name: 'Rappy',
-      image: '/delivery/rappy.png',
+      image: getPublicPath('delivery/rappy.png'),
       webUrl: 'https://rappi.com',
       mobileUrl: 'rappi://',
       alt: 'Rappy - Pedidos a domicilio'
     },
     {
       name: 'Uber Eats',
-      image: '/delivery/ubereats.png',
+      image: getPublicPath('delivery/ubereats.png'),
       webUrl: 'https://www.ubereats.com/mx/store/xy/mU4OTSa-XWW29Ua5hEbe-w?diningMode=DELIVERY',
       mobileUrl: 'https://www.ubereats.com/mx/store/xy/mU4OTSa-XWW29Ua5hEbe-w?diningMode=DELIVERY',
       alt: 'Uber Eats - Pedidos a domicilio'

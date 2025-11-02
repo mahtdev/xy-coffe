@@ -1,4 +1,4 @@
-import { throttle } from '../../shared/utils';
+import { throttle, getPublicPath } from '../../shared/utils';
 import './hero.css';
 
 export class Hero {
@@ -10,7 +10,15 @@ export class Hero {
   }
 
   private init(): void {
+    this.setupBackgroundImage();
     this.setupParallaxEffect();
+  }
+
+  private setupBackgroundImage(): void {
+    if (this.heroElement) {
+      const backgroundImage = getPublicPath('fondo.webp');
+      this.heroElement.style.backgroundImage = `url('${backgroundImage}')`;
+    }
   }
 
   private setupParallaxEffect(): void {
