@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  z-index: 0;
 }
 
 .hero-overlay {
@@ -154,8 +155,10 @@
 
 /* Featured Section */
 .featured {
+  position: relative;
   padding: var(--spacing-xl) 0;
   background: var(--bg-dark);
+  z-index: 1;
 }
 
 .featured-grid {
