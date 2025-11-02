@@ -21,7 +21,7 @@ export class Delivery {
       name: 'Uber Eats',
       image: getPublicPath('delivery/ubereats.png'),
       webUrl: 'https://www.ubereats.com/mx/store/xy/mU4OTSa-XWW29Ua5hEbe-w?diningMode=DELIVERY',
-      mobileUrl: 'https://www.ubereats.com/mx/store/xy/mU4OTSa-XWW29Ua5hEbe-w?diningMode=DELIVERY',
+      mobileUrl: 'ubereats://stores/mU4OTSa-XWW29Ua5hEbe-w',
       alt: 'Uber Eats - Pedidos a domicilio'
     }
   ];
@@ -42,28 +42,39 @@ export class Delivery {
 
       deliveryLinks.forEach((link, index) => {
         link.addEventListener('click', (e) => {
+          e.preventDefault();
           const data = this.deliveryLinks[index];
           if (!data) return;
 
           // Check if mobile
           const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-          if (isMobile && data.mobileUrl && data.mobileUrl !== data.webUrl) {
-            // Try to open mobile app first
-            const mobileLink = document.createElement('a');
-            mobileLink.href = data.mobileUrl;
-            mobileLink.style.display = 'none';
-            document.body.appendChild(mobileLink);
-            mobileLink.click();
-            document.body.removeChild(mobileLink);
-
-            // Fallback to web after short delay if app doesn't open
-            setTimeout(() => {
-              window.open(data.webUrl, '_blank');
-            }, 1000);
+          if (isMobile && data.mobileUrl) {
+            // Check if mobileUrl is a deep link (custom scheme, not http/https)
+            const isDeepLink = /^[a-z]+:\/\//.test(data.mobileUrl) && !data.mobileUrl.startsWith('http');
+            
+            if (isDeepLink) {
+              // Try to open mobile app using deep link
+              // Use window.location.href which is more reliable for deep links
+              const startTime = Date.now();
+              window.location.href = data.mobileUrl;
+              
+              // Fallback to web if app doesn't open after a short delay
+              // If the app opens, the page will lose focus and we won't execute the timeout
+              setTimeout(() => {
+                // Check if enough time has passed and we're still on the page
+                const elapsed = Date.now() - startTime;
+                if (elapsed > 500 && document.hasFocus()) {
+                  // App didn't open, fallback to web
+                  window.location.href = data.webUrl;
+                }
+              }, 2000);
+            } else {
+              // Mobile but using web URL - open directly
+              window.open(data.webUrl, '_blank', 'noopener,noreferrer');
+            }
           } else {
-            // Desktop or same URL: open web
-            e.preventDefault();
+            // Desktop: open web
             window.open(data.webUrl, '_blank', 'noopener,noreferrer');
           }
         });
