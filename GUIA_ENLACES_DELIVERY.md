@@ -5,11 +5,12 @@ Este documento contiene todas las reglas y consideraciones para implementar enla
 ## 📋 Tabla de Contenidos
 
 1. [Reglas Generales](#reglas-generales)
-2. [Uber Eats](#uber-eats)
-3. [DiDi Food](#didi-food)
-4. [Rappy](#rappy)
-5. [Implementación Técnica](#implementación-técnica)
-6. [Fallbacks y Manejo de Errores](#fallbacks-y-manejo-de-errores)
+2. [📐 Especificaciones de Imágenes](#-especificaciones-de-imágenes)
+3. [Uber Eats](#uber-eats)
+4. [DiDi Food](#didi-food)
+5. [Rappy](#rappy)
+6. [Implementación Técnica](#implementación-técnica)
+7. [Fallbacks y Manejo de Errores](#fallbacks-y-manejo-de-errores)
 
 ---
 
@@ -39,7 +40,103 @@ Cada plataforma de delivery debe tener la siguiente estructura:
 - **Ubicación**: `public/delivery/`
 - **Uso**: Siempre usar `getPublicPath('delivery/nombre-imagen.png')` para las rutas
 - **Formato recomendado**: PNG con fondo transparente
-- **Tamaño**: Optimizar para web, mantener proporciones originales
+- **Tamaño**: Ver sección [Especificaciones de Imágenes](#-especificaciones-de-imágenes)
+
+---
+
+## 📐 Especificaciones de Imágenes
+
+### Tamaños Requeridos para Imágenes de Delivery
+
+Las imágenes de delivery deben seguir estas especificaciones para garantizar una visualización óptima en todos los dispositivos.
+
+#### Dimensiones Recomendadas
+
+**Tamaño recomendado para las imágenes**:
+- **Ancho**: `800px` (mínimo) - `1200px` (recomendado)
+- **Alto**: `600px` (mínimo) - `900px` (recomendado)
+- **Proporción**: `4:3` o `3:2` (preferible)
+- **Relación de aspecto**: Mantener proporción rectangular, no cuadrada
+
+#### Dimensiones del Contenedor
+
+**Desktop**:
+- Ancho mínimo: `250px` (columna mínima del grid)
+- Ancho máximo: `~300px` (dividido entre 3 columnas en grid de 900px)
+- Alto mínimo: `300px` (min-height del card)
+- Alto de imagen: `~280px` (alto total menos espacio del nombre)
+
+**Mobile**:
+- Ancho máximo: `400px` (max-width del grid en móvil)
+- Alto mínimo: `300px` (min-height del card)
+
+#### ⚠️ Importante: Comportamiento CSS
+
+Las imágenes usan `object-fit: cover`, lo que significa:
+
+- La imagen se **ajusta** al contenedor manteniendo su proporción
+- Si la imagen es **más pequeña** que el contenedor, puede verse pixelada
+- Si la imagen es **más grande** que el contenedor, se recorta automáticamente (centrado)
+- **Recomendación**: Usar imágenes **más grandes** que el contenedor máximo para evitar pixelación
+
+#### Especificaciones Técnicas
+
+**Formato de archivo**:
+- **Tipo**: PNG (recomendado) o JPG/WebP
+- **Fondo**: Transparente (si es PNG) o con fondo apropiado
+- **Compresión**: Optimizado para web (mantener calidad visual)
+
+**Nombres de archivos**:
+- `didi.png` - Para DiDi Food
+- `rappy.png` - Para Rappy
+- `ubereats.png` - Para Uber Eats
+
+**Ubicación de archivos**:
+```
+public/
+  └── delivery/
+      ├── didi.png
+      ├── rappy.png
+      └── ubereats.png
+```
+
+#### Resumen de Tamaños
+
+| Especificación | Valor |
+|---------------|-------|
+| **Ancho mínimo recomendado** | 800px |
+| **Ancho recomendado** | 1200px |
+| **Alto mínimo recomendado** | 600px |
+| **Alto recomendado** | 900px |
+| **Proporción** | 4:3 o 3:2 |
+| **Formato** | PNG (transparente) |
+| **Peso máximo** | 200KB (optimizado) |
+
+#### Ejemplo Visual de Tamaños
+
+```
+┌─────────────────────────────────────┐
+│                                     │
+│         IMAGEN DE DELIVERY          │
+│    (Ancho: 1200px × Alto: 900px)   │
+│                                     │
+│   Área visible en desktop:          │
+│   ~300px × ~280px                   │
+│                                     │
+│   Área visible en mobile:           │
+│   ~400px × ~280px                   │
+│                                     │
+└─────────────────────────────────────┘
+```
+
+#### Notas para Generación de Imágenes
+
+1. **Usar alta resolución**: Generar imágenes a 1200×900px o superior para evitar pixelación
+2. **Centrar contenido importante**: Como las imágenes se recortan con `object-fit: cover`, el centro será visible
+3. **Mantener proporción 4:3**: Esta proporción funciona mejor para el contenedor
+4. **Evitar texto pequeño**: Si hay texto en la imagen, asegurarse de que sea legible incluso cuando se recorte
+5. **Optimizar para web**: Comprimir sin perder calidad visual significativa
+6. **Fondo transparente**: Si es PNG, usar fondo transparente para mejor integración
 
 ---
 
