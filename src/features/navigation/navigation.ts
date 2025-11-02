@@ -3,10 +3,10 @@ import { smoothScrollTo, throttle } from '../../shared/utils';
 import './navigation.css';
 
 export class Navigation {
-  private navbar: HTMLElement | null;
-  private navToggle: HTMLElement | null;
-  private navMenu: HTMLElement | null;
-  private navLinks: NodeListOf<Element>;
+  private navbar: HTMLElement | null = null;
+  private navToggle: HTMLElement | null = null;
+  private navMenu: HTMLElement | null = null;
+  private navLinks: NodeListOf<Element> = document.querySelectorAll('.nav-link');
   private lastScroll: number = 0;
 
   private navLinksData: NavLink[] = [
@@ -19,6 +19,12 @@ export class Navigation {
   ];
 
   constructor() {
+    // Don't initialize immediately - wait for DOM to be ready
+    // Call init() manually after DOM is rendered
+  }
+
+  public initialize(): void {
+    // Re-query elements after DOM is rendered
     this.navbar = document.getElementById('navbar');
     this.navToggle = document.getElementById('navToggle');
     this.navMenu = document.getElementById('navMenu');

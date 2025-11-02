@@ -16,8 +16,9 @@ export class App {
   private footer: Footer;
 
   constructor() {
+    // Navigation will be initialized after DOM is rendered, but we need to create it for getNavLinks()
     this.navigation = new Navigation();
-    // Hero will be initialized after DOM is rendered
+    // Navigation initialization will happen in main.ts after DOM is rendered
     this.menu = new Menu();
     this.location = new Location();
     this.delivery = new Delivery();
@@ -50,5 +51,9 @@ export class App {
         ${footerHTML}
       </div>
     `;
+  }
+
+  public getNavigation(): Navigation {
+    return this.navigation;
   }
 }

@@ -9,6 +9,9 @@ const coffeeApp = new App();
 
 app.innerHTML = coffeeApp.render();
 
+// Initialize navigation after DOM is rendered
+coffeeApp.getNavigation().initialize();
+
 // Initialize hero after DOM is rendered
 new Hero();
 
