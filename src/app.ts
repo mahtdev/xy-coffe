@@ -2,7 +2,7 @@ import { Contact, createContactHTML } from './features/contact';
 import { createCookiesHTML } from './features/cookies';
 import { Delivery, createDeliveryHTML } from './features/delivery';
 import { Footer, createFooterHTML } from './features/footer';
-import { Hero, createHeroHTML } from './features/hero';
+import { createHeroHTML } from './features/hero';
 import { Location, createLocationHTML } from './features/location';
 import { Menu, createMenuHTML } from './features/menu';
 import { Navigation, createNavigationHTML } from './features/navigation';
@@ -17,7 +17,7 @@ export class App {
 
   constructor() {
     this.navigation = new Navigation();
-    new Hero(); // Initialize hero for parallax effects
+    // Hero will be initialized after DOM is rendered
     this.menu = new Menu();
     this.location = new Location();
     this.delivery = new Delivery();
